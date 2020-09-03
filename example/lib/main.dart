@@ -2,6 +2,7 @@ import 'package:chewie/chewie.dart';
 import 'package:chewie/src/chewie_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 void main() {
@@ -33,6 +34,9 @@ class _ChewieDemoState extends State<ChewieDemo> {
   @override
   void initState() {
     super.initState();
+
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     final url =
         "https://hwkjoss-hwkjbucketname.oss-cn-hangzhou.aliyuncs.com/41b3aa604bb64c16a07d07840f0cad66.mp4?Expires=33124232671&OSSAccessKeyId=LTAI4FemYBqHEAdqfwawpHTH&Signature=vAG2FKn4wT9tLz8qI2FefwVLnmg%3D";
     final url1 =
@@ -71,6 +75,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
       //   color: Colors.grey,
       // ),
       autoInitialize: true,
+      deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
     );
 
     _logListener = () {
