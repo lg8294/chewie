@@ -65,6 +65,7 @@ class ChewieState extends State<Chewie> {
       Navigator.of(context, rootNavigator: true).pop();
       _isFullScreen = false;
     }
+    setState(() {});
   }
 
   @override
@@ -273,8 +274,7 @@ class ChewieController extends ChangeNotifier {
 
   static ChewieController of(BuildContext context) {
     final chewieControllerProvider =
-        context.inheritFromWidgetOfExactType(_ChewieControllerProvider)
-            as _ChewieControllerProvider;
+        context.dependOnInheritedWidgetOfExactType<_ChewieControllerProvider>();
 
     return chewieControllerProvider.controller;
   }
@@ -286,6 +286,8 @@ class ChewieController extends ChangeNotifier {
   bool get isPlaying => videoPlayerController.value.isPlaying;
 
   Future _initialize() async {
+    videoPlayerController.addListener(_videoInitializeListener);
+
     await videoPlayerController.setLooping(looping);
 
     if ((autoInitialize || autoPlay) &&
@@ -314,6 +316,13 @@ class ChewieController extends ChangeNotifier {
     if (videoPlayerController.value.isPlaying && !_isFullScreen) {
       enterFullScreen();
       videoPlayerController.removeListener(_fullScreenListener);
+    }
+  }
+
+  void _videoInitializeListener() async {
+    if (videoPlayerController.value.initialized) {
+      notifyListeners();
+      videoPlayerController.removeListener(_videoInitializeListener);
     }
   }
 

@@ -25,15 +25,34 @@ class _ChewieDemoState extends State<ChewieDemo> {
   TargetPlatform _platform;
   VideoPlayerController _videoPlayerController1;
   VideoPlayerController _videoPlayerController2;
+  VideoPlayerController _videoPlayerController0;
+  VideoPlayerController _videoPlayerController0_1;
   ChewieController _chewieController;
+  VoidCallback _logListener;
 
   @override
   void initState() {
     super.initState();
-    _videoPlayerController1 = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
-    _videoPlayerController2 = VideoPlayerController.network(
-        'https://www.sample-videos.com/video123/mp4/480/asdasdas.mp4');
+    final url =
+        "https://hwkjoss-hwkjbucketname.oss-cn-hangzhou.aliyuncs.com/41b3aa604bb64c16a07d07840f0cad66.mp4?Expires=33124232671&OSSAccessKeyId=LTAI4FemYBqHEAdqfwawpHTH&Signature=vAG2FKn4wT9tLz8qI2FefwVLnmg%3D";
+    final url1 =
+        "http://vfx.mtime.cn/Video/2019/03/21/mp4/190321153853126488.mp4";
+    final url2 =
+        'http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4';
+    // _videoPlayerController0 = VideoPlayerController.network(url);
+    // _videoPlayerController0.initialize().then((value) {
+    //   _videoPlayerController0.setLooping(true);
+    //   _videoPlayerController0.play();
+    // });
+    //
+    // _videoPlayerController0_1 = VideoPlayerController.network(url2);
+    // _videoPlayerController0_1.initialize().then((value) {
+    //   _videoPlayerController0_1.setLooping(true);
+    //   _videoPlayerController0_1.play();
+    // });
+
+    _videoPlayerController1 = VideoPlayerController.network(url2);
+    _videoPlayerController2 = VideoPlayerController.network(url);
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
       aspectRatio: 3 / 2,
@@ -51,14 +70,24 @@ class _ChewieDemoState extends State<ChewieDemo> {
       // placeholder: Container(
       //   color: Colors.grey,
       // ),
-      // autoInitialize: true,
+      autoInitialize: true,
     );
+
+    _logListener = () {
+      print(_videoPlayerController1.value);
+    };
+    _videoPlayerController1.addListener(_logListener);
+    _videoPlayerController2.addListener(_logListener);
+    _videoPlayerController0?.addListener(_logListener);
+    _videoPlayerController0_1?.addListener(_logListener);
   }
 
   @override
   void dispose() {
     _videoPlayerController1.dispose();
     _videoPlayerController2.dispose();
+    _videoPlayerController0?.dispose();
+    _videoPlayerController0_1?.dispose();
     _chewieController.dispose();
     super.dispose();
   }
@@ -75,14 +104,34 @@ class _ChewieDemoState extends State<ChewieDemo> {
           title: Text(widget.title),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(
-              child: Center(
-                child: Chewie(
-                  controller: _chewieController,
-                ),
+            Container(
+              height: 200,
+              child: Chewie(
+                controller: _chewieController,
               ),
             ),
+            if (_videoPlayerController0 != null ||
+                _videoPlayerController0_1 != null)
+              Row(
+                children: <Widget>[
+                  if (_videoPlayerController0 != null)
+                    Flexible(
+                      child: Container(
+                        height: 200,
+                        child: VideoPlayer(_videoPlayerController0),
+                      ),
+                    ),
+                  if (_videoPlayerController0_1 != null)
+                    Flexible(
+                      child: Container(
+                        height: 200,
+                        child: VideoPlayer(_videoPlayerController0_1),
+                      ),
+                    ),
+                ],
+              ),
             FlatButton(
               onPressed: () {
                 _chewieController.enterFullScreen();
@@ -100,9 +149,10 @@ class _ChewieDemoState extends State<ChewieDemo> {
                         _videoPlayerController2.seekTo(Duration(seconds: 0));
                         _chewieController = ChewieController(
                           videoPlayerController: _videoPlayerController1,
-                          aspectRatio: 3 / 2,
+                          // aspectRatio: 3 / 2,
                           autoPlay: true,
                           looping: true,
+                          autoInitialize: true,
                         );
                       });
                     },
@@ -121,9 +171,10 @@ class _ChewieDemoState extends State<ChewieDemo> {
                         _videoPlayerController1.seekTo(Duration(seconds: 0));
                         _chewieController = ChewieController(
                           videoPlayerController: _videoPlayerController2,
-                          aspectRatio: 3 / 2,
+                          // aspectRatio: 3 / 2,
                           autoPlay: true,
                           looping: true,
+                          autoInitialize: true,
                         );
                       });
                     },
