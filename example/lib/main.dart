@@ -87,8 +87,11 @@ class _ChewieDemoState extends State<ChewieDemo> {
                 child: _chewieController != null &&
                         _chewieController
                             .videoPlayerController.value.initialized
-                    ? Chewie(
-                        controller: _chewieController,
+                    ? Container(
+                        color: Colors.black,
+                        child: Chewie(
+                          controller: _chewieController,
+                        ),
                       )
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.center,
