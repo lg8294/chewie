@@ -276,6 +276,7 @@ class ChewieController extends ChangeNotifier {
     this.optionsBuilder,
     this.additionalOptions,
     this.showControls = true,
+    this.transformationController,
     this.zoomAndPan = false,
     this.maxScale = 2.5,
     this.subtitle,
@@ -321,6 +322,7 @@ class ChewieController extends ChangeNotifier {
     Future<void> Function(BuildContext, List<OptionItem>)? optionsBuilder,
     List<OptionItem> Function(BuildContext)? additionalOptions,
     bool? showControls,
+    TransformationController? transformationController,
     bool? zoomAndPan,
     double? maxScale,
     Subtitles? subtitle,
@@ -447,11 +449,14 @@ class ChewieController extends ChangeNotifier {
   /// Whether or not the video should loop
   final bool looping;
 
-  /// Weather or not to show the controls when initializing the widget.
+  /// Wether or not to show the controls when initializing the widget.
   final bool showControlsOnInitialize;
 
   /// Whether or not to show the controls at all
   final bool showControls;
+
+  /// Controller to pass into the [InteractiveViewer] component
+  final TransformationController? transformationController;
 
   /// Whether or not to allow zooming and panning
   final bool zoomAndPan;
@@ -495,7 +500,7 @@ class ChewieController extends ChangeNotifier {
   /// Defines if the player will sleep in fullscreen or not
   final bool allowedScreenSleep;
 
-  /// Defines if the controls should be for live stream video
+  /// Defines if the controls should be shown for live stream video
   final bool isLive;
 
   /// Defines if the fullscreen control should be shown
@@ -634,6 +639,6 @@ class ChewieControllerProvider extends InheritedWidget {
   final ChewieController controller;
 
   @override
-  bool updateShouldNotify(ChewieControllerProvider old) =>
-      controller != old.controller;
+  bool updateShouldNotify(ChewieControllerProvider oldWidget) =>
+      controller != oldWidget.controller;
 }

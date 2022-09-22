@@ -1,6 +1,15 @@
+## 1.3.5
+
+* ⬆️ [#669](https://github.com/fluttercommunity/chewie/pull/669): Fix for CenterPlayButton UI bug when using Material 3. Thanks [luis901101](https://github.com/luis901101).
+* ⬆️ [#658](https://github.com/fluttercommunity/chewie/pull/658): Add transformationController to Interactive Viewer. Thanks [Geevies](https://github.com/Geevies).
+* ⬆️ update `video_player` to 2.4.7
+* ⬆️ update `wakelock` to 0.6.2
+* 🛠️ Fixed new linting issues
+* 💡 Library is now using `flutter_lints` for all of its linting needs.
+
 ## 1.3.4
 * ⬆️ [#646](https://github.com/fluttercommunity/chewie/pull/646): Fix to videos recorded with an orientation of 180° ( landscapeRight) being reversed on Android. Thanks [williamviktorsson](https://github.com/williamviktorsson).
-* ⬆️ [#623](https://github.com/fluttercommunity/chewie/pull/646): [Android] Add a delay before displaying progress indicator. Thanks [henri2h](https://github.com/henri2h).
+* ⬆️ [#623](https://github.com/fluttercommunity/chewie/pull/623): [Android] Add a delay before displaying progress indicator. Thanks [henri2h](https://github.com/henri2h).
 
 ## 1.3.3
 * ⬆️ [#634](https://github.com/fluttercommunity/chewie/pull/634): chore: Move very_good_analysis to dev_dependencies. Thanks [JCQuintas](https://github.com/JCQuintas).
