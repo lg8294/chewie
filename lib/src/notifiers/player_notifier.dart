@@ -19,6 +19,13 @@ class PlayerNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  int _refreshFlag = 0;
+  int get refreshFlag => _refreshFlag;
+  void refresh() {
+    _refreshFlag++;
+    notifyListeners();
+  }
+
   // ignore: prefer_constructors_over_static_methods
   static PlayerNotifier init() {
     return PlayerNotifier._(

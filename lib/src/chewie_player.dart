@@ -49,8 +49,8 @@ class ChewieState extends State<Chewie> {
   void initState() {
     super.initState();
     widget.controller.addListener(listener);
-    widget.controller.videoPlayerController.addListener(videoPlayerListener);
     notifier = PlayerNotifier.init();
+    widget.controller.videoPlayerController.addListener(videoPlayerListener);
   }
 
   @override
@@ -91,7 +91,7 @@ class ChewieState extends State<Chewie> {
         _initAspectRatio) {
       _initAspectRatio =
           widget.controller.videoPlayerController.value.aspectRatio;
-      setState(() {});
+      notifier.refresh();
     }
   }
 
