@@ -9,6 +9,7 @@ environment:
 dependencies:
   chewie:
     path: ../
+  video_player:
   flutter:
     sdk: flutter
 

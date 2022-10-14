@@ -49,14 +49,14 @@ class ChewieState extends State<Chewie> {
   void initState() {
     super.initState();
     widget.controller.addListener(listener);
-    widget.controller.videoPlayerController.addListener(videoPlayerlistener);
+    widget.controller.videoPlayerController.addListener(videoPlayerListener);
     notifier = PlayerNotifier.init();
   }
 
   @override
   void dispose() {
     widget.controller.removeListener(listener);
-    widget.controller.videoPlayerController.removeListener(videoPlayerlistener);
+    widget.controller.videoPlayerController.removeListener(videoPlayerListener);
     super.dispose();
   }
 
@@ -64,7 +64,7 @@ class ChewieState extends State<Chewie> {
   void didUpdateWidget(Chewie oldWidget) {
     if (oldWidget.controller != widget.controller) {
       widget.controller.addListener(listener);
-      widget.controller.videoPlayerController.addListener(videoPlayerlistener);
+      widget.controller.videoPlayerController.addListener(videoPlayerListener);
     }
     super.didUpdateWidget(oldWidget);
     if (_isFullScreen != isControllerFullScreen) {
@@ -85,7 +85,7 @@ class ChewieState extends State<Chewie> {
     }
   }
 
-  Future<void> videoPlayerlistener() async {
+  Future<void> videoPlayerListener() async {
     /// 获取到视频比例后刷新
     if (widget.controller.videoPlayerController.value.aspectRatio !=
         _initAspectRatio) {
