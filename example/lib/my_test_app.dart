@@ -30,12 +30,9 @@ class _MyDemoState extends State<MyDemo> {
 
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-    const url =
-        "https://hwkjoss-hwkjbucketname.oss-cn-hangzhou.aliyuncs.com/41b3aa604bb64c16a07d07840f0cad66.mp4?Expires=33124232671&OSSAccessKeyId=LTAI4FemYBqHEAdqfwawpHTH&Signature=vAG2FKn4wT9tLz8qI2FefwVLnmg%3D";
-    const url1 =
-        "http://vfx.mtime.cn/Video/2019/03/21/mp4/190321153853126488.mp4";
-    const url2 =
-        'http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4';
+    const url = "https://www.w3schools.com/html/movie.mp4";
+    const url1 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
+    const url2 = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
     // _videoPlayerController0 = VideoPlayerController.network(url);
     // _videoPlayerController0.initialize().then((value) {
     //   _videoPlayerController0.setLooping(true);
@@ -48,8 +45,8 @@ class _MyDemoState extends State<MyDemo> {
     //   _videoPlayerController0_1.play();
     // });
 
-    _videoPlayerController1 = VideoPlayerController.network(url2);
-    _videoPlayerController2 = VideoPlayerController.network(url);
+    _videoPlayerController1 = VideoPlayerController.networkUrl(Uri.parse(url2));
+    _videoPlayerController2 = VideoPlayerController.networkUrl(Uri.parse(url));
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
       // aspectRatio: 3 / 2,
