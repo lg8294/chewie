@@ -95,15 +95,18 @@ class PlayerWithControls extends StatelessWidget {
       child: buildPlayerWithControls(chewieController, context),
     );
 
-    // return Center(
-    //   child: SizedBox(
-    //     height: MediaQuery.of(context).size.height,
-    //     width: MediaQuery.of(context).size.width,
-    //     child: AspectRatio(
-    //       aspectRatio: calculateAspectRatio(context),
-    //       child: buildPlayerWithControls(chewieController, context),
+    // return LayoutBuilder(
+    //     builder: (BuildContext context, BoxConstraints constraints) {
+    //   return Center(
+    //     child: SizedBox(
+    //       height: constraints.maxHeight,
+    //       width: constraints.maxWidth,
+    //       child: AspectRatio(
+    //         aspectRatio: calculateAspectRatio(context),
+    //         child: buildPlayerWithControls(chewieController, context),
+    //       ),
     //     ),
-    //   ),
-    // );
+    //   );
+    // });
   }
 }
