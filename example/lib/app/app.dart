@@ -41,9 +41,11 @@ class _ChewieDemoState extends State<ChewieDemo> {
   }
 
   List<String> srcs = [
-    'http://vfx.mtime.cn/Video/2019/03/19/mp4/190319222227698228.mp4',
-    'http://vfx.mtime.cn/Video/2019/03/19/mp4/190319212559089721.mp4',
-    'http://vfx.mtime.cn/Video/2019/03/18/mp4/190318231014076505.mp4',
+    "https://www.w3schools.com/html/movie.mp4",
+    'https://media.w3.org/2010/05/sintel/trailer.mp4',
+    // 'http://vfx.mtime.cn/Video/2019/03/19/mp4/190319222227698228.mp4',
+    // 'http://vfx.mtime.cn/Video/2019/03/19/mp4/190319212559089721.mp4',
+    // 'http://vfx.mtime.cn/Video/2019/03/18/mp4/190318231014076505.mp4',
     // "https://assets.mixkit.co/videos/preview/mixkit-spinning-around-the-earth-29351-large.mp4",
     // "https://assets.mixkit.co/videos/preview/mixkit-daytime-city-traffic-aerial-view-56-large.mp4",
     // "https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4"
