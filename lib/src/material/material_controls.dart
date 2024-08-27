@@ -17,8 +17,8 @@ import 'package:video_player/video_player.dart';
 class MaterialControls extends StatefulWidget {
   const MaterialControls({
     this.showPlayButton = true,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool showPlayButton;
 
@@ -261,6 +261,7 @@ class _MaterialControlsState extends State<MaterialControls>
           bottom: !chewieController.isFullScreen ? 10.0 : 0,
         ),
         child: SafeArea(
+          top: false,
           bottom: chewieController.isFullScreen,
           minimum: chewieController.controlsSafeAreaMinimum,
           child: Column(
