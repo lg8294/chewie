@@ -49,3 +49,5 @@ build/
 
 # FVM Version Cache
 .fvm/
+
+coverage/*
