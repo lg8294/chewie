@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:chewie/chewie.dart';
 import 'package:chewie_example/app/theme.dart';
@@ -312,7 +311,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
                 ),
               ],
             ),
-            if (Platform.isAndroid)
+            if (Theme.of(context).platform == TargetPlatform.android)
               ListTile(
                 title: const Text("Delay"),
                 subtitle: DelaySlider(

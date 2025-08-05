@@ -322,6 +322,7 @@ class ChewieController extends ChangeNotifier {
     this.progressIndicatorDelay,
     this.hideControlsTimer = defaultHideControlsTimer,
     this.controlsSafeAreaMinimum = EdgeInsets.zero,
+    this.pauseOnBackgroundTap = false,
   }) : assert(
           playbackSpeeds.every((speed) => speed > 0),
           'The playbackSpeeds values must all be greater than 0',
@@ -378,8 +379,8 @@ class ChewieController extends ChangeNotifier {
       Animation<double>,
       Animation<double>,
       ChewieControllerProvider,
-    )?
-        routePageBuilder,
+    )? routePageBuilder,
+    bool? pauseOnBackgroundTap,
   }) {
     return ChewieController(
       draggableProgressBar: draggableProgressBar ?? this.draggableProgressBar,
@@ -435,6 +436,7 @@ class ChewieController extends ChangeNotifier {
       hideControlsTimer: hideControlsTimer ?? this.hideControlsTimer,
       progressIndicatorDelay:
           progressIndicatorDelay ?? this.progressIndicatorDelay,
+      pauseOnBackgroundTap: pauseOnBackgroundTap ?? this.pauseOnBackgroundTap,
     );
   }
 
@@ -598,6 +600,9 @@ class ChewieController extends ChangeNotifier {
   /// Adds additional padding to the controls' [SafeArea] as desired.
   /// Defaults to [EdgeInsets.zero].
   final EdgeInsets controlsSafeAreaMinimum;
+
+  /// Defines if the player should pause when the background is tapped
+  final bool pauseOnBackgroundTap;
 
   static ChewieController of(BuildContext context) {
     final chewieControllerProvider =

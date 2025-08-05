@@ -66,6 +66,7 @@ class _MyDemoState extends State<MyDemo> {
       // ),
       autoInitialize: true,
       deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
+      // pauseOnBackgroundTap: true,
     );
 
     _logListener = () {
